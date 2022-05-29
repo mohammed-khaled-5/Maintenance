@@ -1,8 +1,8 @@
-package Users;
+package users;
 
-public class Student {
+public class Student implements User {
 	String name;
-	int Id;
+	int id;
 	String email;
 	String phoneNumber;
 	
@@ -11,19 +11,26 @@ public class Student {
 	public Student(String name, int id, String email, String phoneNumber) {
 		super();
 		this.name = name;
-		Id = id;
+		this.id = id;
 		this.email = email;
 		this.phoneNumber = phoneNumber;
 	}
 
+	public void setEmail(String email) {
+        this.email = email;
+    }
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
+    public void setId(int id) {
+        this.id = id;
+    }
 
 	public String getEmail() {
 		return email;
-	}
-
-
-	public void setEmail(String email) {
-		this.email = email;
 	}
 
 
@@ -32,29 +39,25 @@ public class Student {
 	}
 
 
-	public void setPhoneNumber(String phoneNumber) {
-		this.phoneNumber = phoneNumber;
-	}
-
 	public String getName() {
 		return name;
 	}
 
-	public void setName(String name) {
-		this.name = name;
-	}
-
 	public int getId() {
-		return Id;
+		return id;
 	}
 
-	public void setId(int id) {
-		Id = id;
-	}
 	
 	
 	public void notifyStudent(String message) {
 		// do some stuff
+	}
+
+
+	@Override
+	public void update() {
+		// do some stuff
+		
 	}
 	
 }

@@ -1,6 +1,6 @@
-package Users;
+package users;
 
-public class TA {
+public class TA implements User {
 	String name;
 	String department;
 	String email;
@@ -55,6 +55,12 @@ public class TA {
 	public void notifyTA(String message) {
 		// do some stuff
 		
+	}
+
+
+	@Override
+	public void update() {
+		// do some stuff
 	}
 	
 }
