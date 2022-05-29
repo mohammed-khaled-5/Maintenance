@@ -1,10 +1,8 @@
+package users;
 import java.util.ArrayList;
 
-import Gateways.EmailGateway;
-import Messages.TaskAddedEmailMessage;
-import Users.Professor;
-import Users.Student;
-import Users.TA;
+import gateways.EmailGateway;
+import messages.TaskAddedEmailMessage;
 
 public class Course {
 	
@@ -17,8 +15,8 @@ public class Course {
 	ArrayList<Professor> professorsForEmailNotification;
 	ArrayList<Professor> professorsForSMSNotification;
 	
-	ArrayList<TA> TAsForEmailNotification;
-	ArrayList<TA> TAsForSMSNotification;
+	ArrayList<TA> tasForEmailNotification;
+	ArrayList<TA> tasForSMSNotification;
 	
 	ArrayList<Student> studentsForEmailNotification;
 	ArrayList<Student> studentsForSMSNotification;
@@ -28,18 +26,18 @@ public class Course {
 		this.name = name;
 		this.code = code;
 		
-		announcements = new ArrayList<String>();
-		exams = new ArrayList<String>();
-		grades = new ArrayList<String>();
+		announcements = new ArrayList<>();
+		exams = new ArrayList<>();
+		grades = new ArrayList<>();
 		
-		professorsForEmailNotification = new ArrayList<Professor>();
-		professorsForSMSNotification = new ArrayList<Professor>();
+		professorsForEmailNotification = new ArrayList<>();
+		professorsForSMSNotification = new ArrayList<>();
 		
-		TAsForEmailNotification = new ArrayList<TA>();
-		TAsForSMSNotification = new ArrayList<TA>();
+		tasForEmailNotification = new ArrayList<>();
+		tasForSMSNotification = new ArrayList<>();
 		
-		studentsForEmailNotification = new ArrayList<Student>();
-		studentsForSMSNotification = new ArrayList<Student>();
+		studentsForEmailNotification = new ArrayList<>();
+		studentsForSMSNotification = new ArrayList<>();
 	}
 
 	public String getName() {
@@ -67,11 +65,11 @@ public class Course {
 	}
 	
 	public void subscribeTAForEmailNotification(TA ta) {
-		TAsForEmailNotification.add(ta);
+		tasForEmailNotification.add(ta);
 	}
 	
 	public void subscribeTAForSMSNotification(TA ta) {
-		TAsForSMSNotification.add(ta);
+		tasForSMSNotification.add(ta);
 	}
 	
 	public void subscribeStudentForEmailNotification(Student student) {
@@ -84,7 +82,7 @@ public class Course {
 	
 	
 	
-	public void AddAssignment(String assignName, String assignBody) {
+	public void addAssignment(String assignName, String assignBody) {
 		announcements.add(assignName);
 		String[] placeholders = new String[] {assignName, assignBody};
 		// do some logic here 
@@ -109,7 +107,7 @@ public class Course {
 			emailGateway.sendMessage(notification, professor.getEmail());
 		}
 		
-		for (TA ta : TAsForEmailNotification) {
+		for (TA ta : tasForEmailNotification) {
 			ta.notifyTA(notification);
 			emailGateway.sendMessage(notification, ta.getEmail());
 		}
